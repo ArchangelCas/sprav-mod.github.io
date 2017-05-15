@@ -1,0 +1,112 @@
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, width=device-width">
+<link href="style.css" rel="stylesheet" type="text/css" >
+	<title>
+		Итоговый тест
+	</title>
+  <script type="text/javascript" src="js/script2.js"></script>
+	<link rel="shortcut icon" href="img/znak.png" type="img/png">
+  <script type="text/javascript" src="js/script1.js"></script>
+
+</head>
+<body>
+ <div class="wrapper"> 
+  <div class="top">
+  </div>
+  <ul class="navigation">
+    <li><a href="index.html">Главная</a></li>
+    <li><a href="teomat.html">Теоретический материал</a></li>
+    <li><a href="itog.html">Итоговый тест</a></li>
+    <li><a href="onas.html">Контакты</a></li>
+        <li><a href="otzivy.html">Отзывы</a></li>
+    <li><a href="http://dpo-energo.ru"><img src="img/23.jpg" alt=""></a></li>
+      <li><a href="vhodd.html">Вход</a></li>
+    <div class="clear"></div>
+  </ul>
+  <div class="footer">
+<h1 align="CENTER" class="pageTitle">Проверка знаний</h1>
+<form charset="windows-1251" name="Q" action="" method="post">
+<br>Вопрос №1. Что включает в себя пользовательский интерфейс?
+<br><input type="radio" name="rb1" value="1" checked="">Вход, Навигация, Новости
+<br> <input type="radio" name="rb1" value="0">Ссылку
+<br> <input type="radio" name="rb1" value="0">Выбор языка
+    <hr width="100%" size="1">
+<br>Вопрос №2. Что включает в себя процедура регистрации?
+<br><input type="radio" name="rb2" value="1" checked="">Создание учетной записи
+<br> <input type="radio" name="rb2" value="0">Редактирование учетной записи
+<br> <input type="radio" name="rb2" value="0">Удаление учетной записи
+    <hr width="100%" size="1">
+<br>Вопрос №3. Курсы разбиваются на категории и ...?
+<br> Ответ: <input type="text" name="rb3" size="30">
+    <hr width="100%" size="1">
+<br>Вопрос №4. Стандарт организации учебного материала. Что это?
+<br> Ответ: <input type="text" name="rb4" size="30">
+    <hr width="100%" size="1">
+<br>Вопрос №5. Что входит в основное содержание курса?
+<br><input type="radio" name="rb5" value="1"  checked="">Нулевой и тематический раздел
+<br> <input type="radio" name="rb5" value="0">Ресурсы
+<br> <input type="radio" name="rb5" value="0">Учебного курса
+    <hr width="100%" size="1">
+</form>
+<form charset="windows-1251" name="L">
+ <input type="hidden" name="l1" value="0">
+ <input type="hidden" name="l2" value="3">
+ <input type="hidden" name="l3" value="6">
+ <input type="hidden" name="l4" value="9">
+ <input type="hidden" name="l5" value="12">
+</form>
+<form charset="windows-1251" name="H" action="" method="post">
+ <input type="hidden" name="h1" value="2">
+ <input type="hidden" name="h2" value="5">
+ <input type="hidden" name="h3" value="8">
+ <input type="hidden" name="h4" value="11">
+ <input type="hidden" name="h5" value="14">
+</form>
+<form charset="windows-1251" name="D" action="" method="post">
+ <input type="hidden" name="tDtxt1" value="Ваша оценка 1">
+ <input type="hidden" name="tDtxt2" value="Ваша оценка 2">
+ <input type="hidden" name="tDtxt3" value="Ваша оценка 3">
+ <input type="hidden" name="tDtxt4" value="Ваша оценка 4">
+ <input type="hidden" name="tDtxt5" value="Ваша оценка 5">
+</form>
+<script type="text/javascript">
+<!--
+function makeDiagnosis() { // вводим функцию для обработки ответов
+  tQcnt = 5;//здесь прописываем количество вопросов
+  tDcnt = 5;//здесь прописываем количество оценочны интервалов
+ summa = 0;//начальная сумма правильных ответов
+ for( j=0; j<document.Q.rb1.length; j++ ) { if( document.Q.rb1[j].checked ) { summa += eval(document.Q.rb1[j].value); } }  //обработка первого ответа
+   for( j=0; j<document.Q.rb2.length; j++ ) { if( document.Q.rb2[j].checked ) { summa += eval(document.Q.rb2[j].value); } }  //обработка второго ответа
+ if(document.Q.rb3.value=="подкатегории"){summa++;}  //обработка третьего ответа, подкатегории – это нужный, правильный ответ
+ if(document.Q.rb4.value=="SCORM"){summa++;}  //обработка 4 ответа, SCORM – это нужный, правильный ответ
+    for( j=0; j<document.Q.rb5.length; j++ ) { if( document.Q.rb5[j].checked ) { summa += eval(document.Q.rb2[j].value); } }  //обработка 5 ответа
+//При выборе правильно правильного ответа сумма увеличивается на 1.
+//Обрабатываем набранную сумму баллов.
+ dx = -1;
+  for( i=0; i<tDcnt; i++ ) {
+    if( summa >= eval(document.L.elements[i].value) && summa <= eval(document.H.elements[i].value) ) { dx = i; break; }
+  }
+document.C.tDiagnosis.value = "Вы набрали  "+summa+"  баллов. "+document.D.elements[dx].value;
+}//вывод результата в форму на экран
+// -->
+</script>
+<!-- /скрипт расчета результатов тестирования -->
+<!-- форма вывода результатов тестирования -->
+<form charset="windows-1251" name="C">
+  <center>
+  <textarea name="tDiagnosis" rows="6" cols="80" wrap="">
+</textarea><br>
+ <input type="button" name="pbSubmit" value="Результаты" onclick="makeDiagnosis()">
+<input type="reset" value="Сбросить" name="res" />
+ <br>
+<hr width="100%" size="1">
+</center>
+</form>
+</div>
+  <H5 align="CENTER">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;© Все права защищены., 2017 год</H5>
+</div>
+</div> 
+</body>
+<html>
